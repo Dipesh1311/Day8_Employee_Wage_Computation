@@ -1,6 +1,6 @@
 package com.bridgelabz.empwagecomputation;
 
-public class CompanyEmployeeWage {
+public class CompanyEmployeeWage<maxHours> {
     private static final int FULL_TIME = 1;
     private static final int PART_TIME = 0;
 
@@ -39,6 +39,6 @@ public class CompanyEmployeeWage {
             dailyWage = (wagePerHour * workingHours);
             totalWage += dailyWage;
         }
-        return companyName+" "+totalWage;
+        return companyName + " " + totalWage;
     }
 }
