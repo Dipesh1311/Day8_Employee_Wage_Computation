@@ -2,14 +2,13 @@ package com.bridgelabz.empwagecomputation;
 
 import java.util.ArrayList;
 
-public class CompanyEmployeeWage<maxHours> {
+public class CompanyEmployeeWage {
     private static final int FULL_TIME = 1;
     private static final int PART_TIME = 0;
-
-    private final String companyName;
-    private final int wagePerHour;
-    private final int workingDaysPerMonth;
-    private final int maxHours;
+    private String companyName;
+    private int wagePerHour;
+    private int workingDaysPerMonth;
+    private int maxHours;
 
     public CompanyEmployeeWage(String companyName, int wagePerHour, int workingDaysPerMonth, int maxHours) {
         this.companyName = companyName;
@@ -26,7 +25,7 @@ public class CompanyEmployeeWage<maxHours> {
         int totalHours = 0;
         int workingHours = 0;
 
-        while (totalDays <= workingDaysPerMonth && totalHours < maxHours) {
+        while (totalDays < workingDaysPerMonth && totalHours < maxHours) {
             totalDays++;
             int checkWorking = (int) (Math.random() * 3);
             switch (checkWorking) {
@@ -41,9 +40,7 @@ public class CompanyEmployeeWage<maxHours> {
             }
             dailyWage = (wagePerHour * workingHours);
             arrayList.add(dailyWage);
-            totalWage += dailyWage;
         }
-        arrayList.add(totalWage);
         return arrayList;
     }
 }
