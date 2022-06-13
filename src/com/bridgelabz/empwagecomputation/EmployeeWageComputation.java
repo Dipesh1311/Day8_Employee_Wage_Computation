@@ -2,58 +2,38 @@ package com.bridgelabz.empwagecomputation;
 
 public class EmployeeWageComputation {
 
-    private static final int IS_FULL_TIME = 1;
-    private static final int IS_PART_TIME = 2;
+    public static void main(String[] args) {
+        final int FULLTIME = 1;
+        final int PARTTIME = 0;
+        int WORKINGDAYS_PER_MONTH = 20;
+        int WAGE_PER_HOUR = 20;
+        int TOTALHOURS = 100;
+        int workingHours = 8;
+        int monthlyWage = 0;
+        int totalDays = 0;
+        int totalHours = 0;
 
-    private final String company;
-    private final int empRate;
-    private final int numOFDays;
-    private final int maxHours;
+        while (totalDays < WORKINGDAYS_PER_MONTH && totalHours < TOTALHOURS) {
+            totalDays++;
 
-    public EmployeeWageComputation(String company, int empRate, int numOFDays, int maxHours) {
-        this.company = company;
-        this.empRate = empRate;
-        this.numOFDays = numOFDays;
-        this.maxHours = maxHours;
-    }
+            int checkWorking = (int) (Math.random() * 3);
 
-    public int calculateEmpWageForCompany() {
-
-        System.out.println("----- Welcome to Employee Wage Computation! -----");
-        int empHrs=0, empWagePerMonth = 0, totalWorkingdays=0, totalEmpHours = 0;
-
-        while(totalEmpHours <= this.maxHours && totalWorkingdays < this.numOFDays) {
-
-            totalWorkingdays ++;
-            int empType = (int)Math.floor(Math.random() * 10) % 3;
-
-            switch(empType) {
-                case IS_FULL_TIME:
-                    empHrs = 8;
+            switch (checkWorking) {
+                case FULLTIME:
+                    workingHours = 8;
                     break;
-                case IS_PART_TIME:
-                    empHrs = 4;
+                case PARTTIME:
+                    workingHours = 4;
                     break;
                 default:
-                    empHrs = 0;
+                    workingHours = 0;
             }
 
-            totalEmpHours += empHrs;
-            int empWagePerDay = empHrs * this.empRate;
-            empWagePerMonth += empWagePerDay;
-            System.out.println("Emp Wage Per Day : "+empWagePerDay);
+            totalHours = totalHours+workingHours;
         }
 
-        System.out.println("Emp Wage Per Month for Company: "+this.company+" is : "+empWagePerMonth);
-        return empWagePerMonth;
-    }
-
-    public static void main(String[] args) {
-        EmployeeWageComputation bridgelabz = new EmployeeWageComputation("BridgeLabz", 20, 2, 10);
-        EmployeeWageComputation dMart = new EmployeeWageComputation("DMART", 40, 5, 20);
-        bridgelabz.calculateEmpWageForCompany();
-        System.out.println();
-        dMart.calculateEmpWageForCompany();
-
+        monthlyWage = (WAGE_PER_HOUR * totalHours);
+        System.out.println("Total Hours:" + totalHours);
+        System.out.println("Monthly Employee Wage:" + monthlyWage);
     }
 }
