@@ -4,8 +4,19 @@ public class EmpWageBuilder {
     private static final int FULL_TIME = 1;
     private static final int PART_TIME = 0;
 
-    public static void get_EmployeeWageForCompany(String company, int wagePerHour, int workingDaysPerMonth,
-                                                  int maxHours) {
+    private final String companyName;
+    private final int wagePerHour;
+    private final int workingDaysPerMonth;
+    private final int maxHours;
+
+    public EmpWageBuilder(String companyName, int wagePerHour, int workingDaysPerMonth, int maxHours) {
+        this.companyName = companyName;
+        this.wagePerHour = wagePerHour;
+        this.workingDaysPerMonth = workingDaysPerMonth;
+        this.maxHours = maxHours;
+    }
+
+    public void get_EmployeeWageForCompany() {
         int totalWage = 0;
         int dailyWage = 0;
         int totalDays = 0;
@@ -26,14 +37,15 @@ public class EmpWageBuilder {
                     workingHours = 0;
             }
             dailyWage = (wagePerHour * workingHours);
-            System.out.println("Day " + totalDays + " Employee Wage for Company " + company + " is " + dailyWage);
+            System.out.println("Day " + totalDays + " Employee Wage for Company " + companyName + " is " + dailyWage);
             totalWage += dailyWage;
         }
-        System.out.println("Total Employee Wage for " + company + " is " + totalWage);
+        System.out.println("Total Employee Wage for " + companyName + " is " + totalWage);
     }
 
     public static void main(String[] args) {
         System.out.println("Welcome to Employee Wage Computation");
-        get_EmployeeWageForCompany("Reliance", 20, 20, 50);
+        EmpWageBuilder empWageBulider = new EmpWageBuilder("Reliance", 20, 20, 50);
+        empWageBulider.get_EmployeeWageForCompany();
     }
 }
