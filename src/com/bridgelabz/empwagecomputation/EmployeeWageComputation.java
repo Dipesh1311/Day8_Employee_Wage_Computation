@@ -1,7 +1,5 @@
 package com.bridgelabz.empwagecomputation;
-
 public class EmployeeWageComputation {
-
     public static void main(String[] args) {
         final int FULLTIME = 1;
         final int PARTTIME = 0;
